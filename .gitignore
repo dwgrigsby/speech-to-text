@@ -3,3 +3,6 @@
 api-key.json
 parts/
 venv
+*.flac
+transcript.txt
+silent-matter*.json
