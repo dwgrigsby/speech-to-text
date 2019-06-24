@@ -6,3 +6,5 @@ venv
 *.flac
 transcript.txt
 silent-matter*.json
+converted/
+.vscode/
