@@ -34,8 +34,14 @@ if len(files) > 0:
         with sr.AudioFile(name) as source:
             audio = r.record(source)
         # Transcribe audio file
-        text = r.recognize_google_cloud(audio, credentials_json=GOOGLE_CLOUD_SPEECH_CREDENTIALS)
-        print(name + " done")
+
+        try:
+            text = r.recognize_google_cloud(audio, credentials_json=GOOGLE_CLOUD_SPEECH_CREDENTIALS)
+        except:
+            #Suspect UnknownValueError from _init__.py line 937
+            text = "No text found and transcribed in audio : "+file
+        finally:
+            print(name + " done")
         return {
             "idx": idx,
             "text": text
